@@ -1,0 +1,6 @@
+backend/
+Dockerfile
+docker-compose.yml
+QUICKSTART.md
+LAUNCH_CHECKLIST.md
+GITHUB_VERCEL_DEPLOY.md
