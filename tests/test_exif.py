@@ -9,7 +9,7 @@ import piexif
 import pytest
 from PIL import Image
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "backend"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".migration-backup", "backend"))
 
 from exif_generator import add_realistic_exif
 from exif_profiles import CAMERA_PROFILES
