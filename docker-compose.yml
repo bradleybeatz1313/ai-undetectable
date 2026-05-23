@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    container_name: ai-undetectable-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./processed:/app/processed
+      - ./backend:/app
+    environment:
+      DATABASE_URL: sqlite:///./ai_undetectable.db
+      STRIPE_SECRET_KEY: sk_test_dummy
+      ENVIRONMENT: development
+      DEBUG: "true"
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Optional: PostgreSQL for production
+  # postgres:
+  #   image: postgres:15
+  #   container_name: ai-undetectable-db
+  #   environment:
+  #     POSTGRES_USER: aidetect
+  #     POSTGRES_PASSWORD: secure_password
+  #     POSTGRES_DB: ai_undetectable
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #
+  # volumes:
+  #   postgres_data:

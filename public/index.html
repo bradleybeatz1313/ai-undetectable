@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Undetectable - Make AI Images Undetectable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        .tagline {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .problem {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+
+        button, .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f9f9f9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .feature {
+            padding: 30px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .pricing {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .pricing-card.popular {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f5f5ff 0%, #f0f0ff 100%);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .price small {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .features-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .api-docs {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+            background: #f9f9f9;
+            padding: 50px;
+            border-radius: 8px;
+        }
+
+        .api-docs h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        code {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">AI Undetectable</div>
+        <div>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#docs">Docs</a>
+        </div>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Make AI Images Undetectable</h1>
+    <p class="tagline">Transform AI-generated images to pass detection tests</p>
+    <p class="problem">
+        AI detection tools like ZeroGPT, Copyleaks, and Turnitin can identify AI-generated images.
+        That limits where you can use them. AI Undetectable fixes that — one API call away.
+    </p>
+    <div class="cta-buttons">
+        <button class="btn btn-primary" onclick="alert('Coming soon: Sign up form')">Start Free</button>
+        <a href="#docs" class="btn btn-secondary">Read API Docs</a>
+    </div>
+</div>
+
+<div class="features" id="features">
+    <div class="feature">
+        <h3>⚡ Sub-5 Second Processing</h3>
+        <p>Fast image transformation. Upload, process, download—all in seconds.</p>
+    </div>
+    <div class="feature">
+        <h3>🎯 Proven Undetectable</h3>
+        <p>Passes ZeroGPT, Copyleaks, and other major AI detection tools.</p>
+    </div>
+    <div class="feature">
+        <h3>🔐 Privacy First</h3>
+        <p>Files deleted after 7 days (free) or 30 days (pro). No logs. Simple.</p>
+    </div>
+    <div class="feature">
+        <h3>🛠 Simple API</h3>
+        <p>One endpoint. Multipart form upload. JSON response. Done.</p>
+    </div>
+    <div class="feature">
+        <h3>📈 Freemium Model</h3>
+        <p>10 free images/month. Pro tier: 500/month for $9.99.</p>
+    </div>
+    <div class="feature">
+        <h3>🌍 No Limits on Growth</h3>
+        <p>Scale your content creation. Unlimited images on enterprise.</p>
+    </div>
+</div>
+
+<div class="pricing" id="pricing">
+    <h2>Simple Pricing</h2>
+    <div class="pricing-table">
+        <div class="pricing-card">
+            <h3>Free</h3>
+            <div class="price">$0<small>/month</small></div>
+            <ul class="features-list">
+                <li>10 images/month</li>
+                <li>Max 2MB per image</li>
+                <li>7-day storage</li>
+                <li>Email support</li>
+            </ul>
+            <button class="btn btn-primary">Start Free</button>
+        </div>
+        <div class="pricing-card popular">
+            <h3>Pro</h3>
+            <div class="price">$9.99<small>/month</small></div>
+            <ul class="features-list">
+                <li>500 images/month</li>
+                <li>Max 10MB per image</li>
+                <li>30-day storage</li>
+                <li>Batch API access</li>
+                <li>Priority support</li>
+            </ul>
+            <button class="btn btn-primary">Upgrade to Pro</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Enterprise</h3>
+            <div class="price">Custom<small>/month</small></div>
+            <ul class="features-list">
+                <li>Unlimited images</li>
+                <li>Unlimited file size</li>
+                <li>Dedicated endpoint</li>
+                <li>SLA support</li>
+                <li>Custom integrations</li>
+            </ul>
+            <button class="btn btn-secondary">Contact Sales</button>
+        </div>
+    </div>
+</div>
+
+<div class="api-docs" id="docs">
+    <h2>API Documentation</h2>
+    <h3>Authentication</h3>
+    <p>All requests require an <code>X-API-Key</code> header. Get your key by signing up.</p>
+
+    <h3>Process Image</h3>
+    <p><strong>POST</strong> <code>/process</code></p>
+    <p>Upload an image for processing.</p>
+    <pre>curl -X POST http://localhost:8000/process \
+  -H "X-API-Key: your_api_key_here" \
+  -F "file=@image.jpg"</pre>
+
+    <p><strong>Response:</strong></p>
+    <pre>{
+  "success": true,
+  "message": "Image processed successfully",
+  "upload_id": "550e8400-e29b-41d4-a716-446655440000",
+  "remaining_quota": 9,
+  "tier": "free"
+}</pre>
+
+    <h3>Download Processed Image</h3>
+    <p><strong>GET</strong> <code>/result/{upload_id}</code></p>
+    <p>Download your processed image.</p>
+    <pre>curl -H "X-API-Key: your_api_key_here" \
+  http://localhost:8000/result/550e8400-e29b-41d4-a716-446655440000 \
+  -o undetectable.jpg</pre>
+
+    <h3>Check Usage</h3>
+    <p><strong>GET</strong> <code>/usage</code></p>
+    <p>Get your current usage stats.</p>
+    <pre>curl -H "X-API-Key: your_api_key_here" \
+  http://localhost:8000/usage</pre>
+
+    <h3>Get API Documentation</h3>
+    <p>Visit <code>http://localhost:8000/docs</code> for interactive Swagger UI.</p>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 AI Undetectable. All rights reserved.</p>
+        <p>Built by <a href="https://bradbarroso.com" style="color: white;">Brad Barroso</a></p>
+        <p><a href="mailto:support@aidetectable.com" style="color: #999;">support@aidetectable.com</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
