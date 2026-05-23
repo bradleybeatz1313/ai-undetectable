@@ -1,77 +1,49 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Virtual environments
-venv/
-ENV/
-env/
-.venv/
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
+# dependencies
+node_modules
 
-# Environment
-.env
-.env.local
-.env.*.local
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Uploads & processed files
-uploads/
-processed/
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
-# Logs
-*.log
-logs/
-
-# OS
+# System Files
 .DS_Store
 Thumbs.db
 
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
 
-# Docker
-docker-compose.override.yml
-
-# Stripe testing
-.stripe-cli-history
-
-# Vercel
-.vercel
-
-# Claude
-.claude/
+# Replit
+.cache/
+.local/
