@@ -88,18 +88,20 @@ router.post("/process", upload.single("file"), async (req, res) => {
   }
 
   try {
-    const uploadId = uuidv4();
     const processed = await processImage(req.file.buffer);
+    const downloadName = `undetectable_${uuidv4().replace(/-/g, "").slice(0, 8)}.jpg`;
 
-    res.json({
-      success: true,
-      message: "Image processed successfully",
-      upload_id: uploadId,
-      remaining_quota: 9,
-      tier: "free",
-    });
+    res.setHeader("Content-Type", "image/jpeg");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename="${downloadName}"`,
+    );
+    res.send(processed);
 
-    req.log.info({ uploadId, fileSizeMb: fileSizeMb.toFixed(2) }, "Image processed");
+    req.log.info(
+      { downloadName, fileSizeMb: fileSizeMb.toFixed(2) },
+      "Image processed",
+    );
   } catch (err) {
     req.log.error({ err }, "Image processing failed");
     res.status(500).json({ error: "Failed to process image" });
