@@ -6,6 +6,7 @@ from pathlib import Path
 from PIL import Image, ImageFilter, ImageEnhance
 import numpy as np
 from typing import Tuple
+from exif_generator import add_realistic_exif, add_fake_exif
 
 
 UPLOADS_DIR = Path("uploads")
@@ -68,6 +69,9 @@ def process_image(input_path: str, output_path: str) -> bool:
 
         # Step 6: Final JPEG encoding with slightly different quality
         img.save(output_path, format="JPEG", quality=94)
+
+        # Step 7: Inject realistic EXIF metadata
+        add_realistic_exif(output_path)
 
         return True
 
