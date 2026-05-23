@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "AI Undetectable"
+version = "1.0.0"
+id = "artifacts/ai-undetectable"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22931
+
+[services.development]
+run = "pnpm --filter @workspace/ai-undetectable run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ai-undetectable", "run", "build" ]
+publicDir = "artifacts/ai-undetectable/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22931"
+BASE_PATH = "/"
